@@ -69,9 +69,74 @@ fadeEls.forEach(function (fadeEl, index) {
 // new Swiper(요소, 옵션: {};
 // 첫번째 인수: 슬라이드 기능을 적용할 요소의 선택자
 // 두번째 인수: 다양한 옵션을 객체 데이터로 전달 (API 페이지 참고)
-new Swiper('.swiper', {
+new Swiper('.notice .swiper', {
   // Optional parameters
   direction: 'vertical',
   loop: true,
   autoplay: true, // 자동 재생 여부
+});
+
+// 프로모션 수평 슬라이드 기능
+new Swiper('.promotion .swiper', {
+  // Optional parameters
+  direction: 'horizontal', // 수평 슬라이드(기본값)
+  loop: true,
+  autoplay: {
+    delay: 5000 // 5초로 설정 (기본값 3초)
+  },
+  slidesPerView: 3, // 한 번에 보여줄 슬라이드 개수 (기본값: 1)
+  spaceBetween: 10, // 슬라이드 간의 간격
+  centeredSlides: true, // 1번 슬라이드가 가운데 보이기
+  pagination: { // 페이지 번호 사용
+    el: '.promotion .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.promotion .swiper-button-next',
+    prevEl: '.promotion .swiper-button-prev',
+  },
+});
+
+// 프로모션 섹션 토글 기능
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+const promotionToggleIcon = promotionToggleBtn.querySelector('.material-icons'); 
+
+promotionToggleBtn.addEventListener('click', function() {
+  if (promotionEl.classList.contains('hide')) {
+    promotionEl.classList.remove('hide');
+    promotionToggleIcon.textContent = 'upload';
+  } else {
+    promotionEl.classList.add('hide');
+    promotionToggleIcon.textContent = 'download';
+  }
+});
+
+// 유튜브 섹션 ㅟ에 부유 요소 애니메이션 처리
+// gsap.to(요소, 지속시간, 옵션: {})
+// 옵션참고: https://greensock.com/docs/v3/GSAP/gsap.to()
+
+gsap.to('.floating1', 1.5, {
+  delay: 1, // 얼마나 늦게 애니메이션을 시작할 것인지 지연 시간을 설정
+  y: -15, // 수직으로 얼마나 움직일지 설정, transform: translateY(수치); 와 같음
+  x: 15,
+  repeat: -1, //몇번 반복할지 설정, 무한은 -1
+  yoyo: true, // 한 번 재생된 애니메이션을 다시 뒤로 재생
+  ease: Power1.easeInOut // 타이밍 함수 적용, 느리게-빠르게-느리게
+});
+
+// 지속시간, delay, y를 자유롭게 변경하여 적용하기
+gsap.to('.floating2', 2, {
+  delay: 1, // 얼마나 늦게 애니메이션을 시작할 것인지 지연 시간을 설정
+  y: 50, // 수직으로 얼마나 움직일지 설정, transform: translateY(수치); 와 같음
+  repeat: -1, //몇번 반복할지 설정, 무한은 -1
+  yoyo: true, // 한 번 재생된 애니메이션을 다시 뒤로 재생
+  ease: Power1.easeInOut // 타이밍 함수 적용, 느리게-빠르게-느리게
+});
+gsap.to('.floating3', 1.5, {
+  delay: 1, // 얼마나 늦게 애니메이션을 시작할 것인지 지연 시간을 설정
+  y: 30, // 수직으로 얼마나 움직일지 설정, transform: translateY(수치); 와 같음
+  repeat: -1, //몇번 반복할지 설정, 무한은 -1
+  yoyo: true, // 한 번 재생된 애니메이션을 다시 뒤로 재생
+  ease: Power1.easeInOut // 타이밍 함수 적용, 느리게-빠르게-느리게
 });
