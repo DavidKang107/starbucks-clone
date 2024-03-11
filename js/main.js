@@ -140,3 +140,17 @@ gsap.to('.floating3', 1.5, {
   yoyo: true, // 한 번 재생된 애니메이션을 다시 뒤로 재생
   ease: Power1.easeInOut // 타이밍 함수 적용, 느리게-빠르게-느리게
 });
+
+// ScrollMagic 사용
+// 그 외 scrollreveal => 둘다 많이 사용하는 라이브러리
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function (spyEl) {
+  new ScrollMagic.Scene({ //감시할 장면 추가 및 옵션 지정
+    triggerElement: spyEl, //보여짐 여부를 감시할 요소를 지정
+    triggerHook: 0.8 // 화면 80% 지점에서 보여짐 여부 감시 (0~1사이 지정)
+
+  })
+  .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
+  .addTo(new ScrollMagic.Controller()); //컨트롤러에 장면을 할당(필수!)
+  // 라이브러리에서 지정한 문법으로 깊게 이해X
+})
