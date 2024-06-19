@@ -187,7 +187,7 @@ header .sub-menu ul.menu li a {
   display: block; /* 상하 여백 적용을 위해 변경 */
   padding: 11px 16px; /* 클릭할 수 있는 영역을 넓혀주는 효과 */
   font-size: 13px;
-  color: #656565;
+  /* color: #656565; */
 }
 
 header .sub-menu ul.menu li a:hover {
